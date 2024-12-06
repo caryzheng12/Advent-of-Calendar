@@ -21,40 +21,24 @@ for report in puzzle_input:
         decrease = 1
         if (result + 3) >= iterations:
           result = iterations
-          
-        else:
-          failed = 1
-          break
 
       elif (result > iterations) and decrease == 0:
         increase = 1
         if (result -3) <= iterations:
           result = iterations
-        else:
-          failed = 1
-          break
-      
+
+      elif result == iterations and failed < 1:
+        result = iterations
+        failed += 1
+
       else:
-        failed = 1
+        failed = 2
         break
+
     else:
       result = iterations
 
-  #for iterations in report:
-    #if result is not None:
-      #if result < iterations or (result + 3) >= iterations:
-        #result = iterations
-      #elif result > iterations or (result -3) <= iterations:
-        #result = iterations
-        #print("decrease")
-      #else:
-        #failed = 1
-        #print(failed)
-        #break
-    #else:
-      #result = iterations
-
-  if failed == 0:
+  if failed <= 1:
     success += 1
 
 print(success)
